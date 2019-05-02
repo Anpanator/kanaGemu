@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+#main_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #ddd;
+}
+
+#challange_box {
+  flex: 0 0 50%;
+
+  background-color: #eee;
+  text-align: center;
+}
+
+#current_kana > .kana {
+  font-size: 10vw;
+}
+
+#answer_field_wrapper {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+#answer_field {
+  flex: 0 0 33%;
+  padding: 5px;
+  font-size: 2vw;
+  border: 1px solid black;
+  border-radius: 5px;
+}
