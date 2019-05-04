@@ -27,17 +27,13 @@
         <div id="timer">00.00</div>
     </div>
 </div>
-</body>
 <script type="text/javascript">
 <!--
-async function timer(element, startTime) {
-    element.textContent = ((Date.now() - startTime) / 1000)
-        .toFixed(2).toString().padStart(5, "0");
-}
 let startTime = Date.now();
 let gameService = new GameService();
 let timerElement = document.getElementById("timer");
 let timerInterval = setInterval(timer, 43, timerElement, startTime);
 // -->
 </script>
+</body>
 </html>
