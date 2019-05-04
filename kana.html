@@ -9,22 +9,35 @@
 <script src="app.js"></script>
 </head>
 <body>
-  <div id="main_container">
-  <div id="challange_box">
-    <div id="current_kana">
-        <span class="kana">あ</span>
+<div id="main_container">
+    <div id="settings">
+
     </div>
-    <div id="answer_field_wrapper">
-        <div id="answer_field" contenteditable oninput="alert('test')">
-            Answer field
+    <div id="challange_box">
+        <div id="current_kana">
+            <span class="kana">あ</span>
+        </div>
+        <div id="answer_field_wrapper">
+            <div id="answer_field" contenteditable oninput="alert('test')">
+                Answer field
+            </div>
         </div>
     </div>
-  </div>
+    <div id="stats">
+        <div id="timer">00.00</div>
+    </div>
 </div>
 </body>
 <script type="text/javascript">
 <!--
-
+async function timer(element, startTime) {
+    element.textContent = ((Date.now() - startTime) / 1000)
+        .toFixed(2).toString().padStart(5, "0");
+}
+let startTime = Date.now();
+let gameService = new GameService();
+let timerElement = document.getElementById("timer");
+let timerInterval = setInterval(timer, 43, timerElement, startTime);
 // -->
 </script>
 </html>

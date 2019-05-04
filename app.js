@@ -122,6 +122,10 @@ const ALL_KANA = {
 }
 class GameService {
 
+  async updateTime(element, startTime) {
+      element.textContent = ((Date.now() - startTime) / 1000)
+          .toFixed(2).toString().padStart(5, "0");
+  }
 }
 
 class GameState {
@@ -131,5 +135,8 @@ class GameState {
 }
 
 class GameSettings {
+  constructor() {
+    this.timerElement = document.getElementById("timer");
+  }
 
 }
