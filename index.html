@@ -32,7 +32,7 @@
 let startTime = Date.now();
 let gameService = new GameService();
 let timerElement = document.getElementById("timer");
-let timerInterval = setInterval(timer, 43, timerElement, startTime);
+let timerInterval = setInterval(gameService.updateTime, 43, timerElement, startTime);
 // -->
 </script>
 </body>
