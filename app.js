@@ -1,6 +1,6 @@
 const ALL_KANA = {
-    "hiragana": {
-        "monographs": {
+    hiragana: {
+        monographs: {
             "あ" : ["a"],
             "い" : ["i"],
             "う" : ["u"],
@@ -50,7 +50,7 @@ const ALL_KANA = {
             "を" : ["wo"],
             "ん" : ["n"]
         },
-        "monographs-diacritics": {
+        monographs_diacritics: {
             "が" : ["ga"],
             "ぎ" : ["gi"],
             "ぐ" : ["gu"],
@@ -77,7 +77,7 @@ const ALL_KANA = {
             "ぺ" : ["pe"],
             "ぽ" : ["po"]
         },
-        "digraphs": {
+        digraphs: {
           "きゃ" : ["kya"],
           "きゅ" : ["kyu"],
           "きょ" : ["kyo"],
@@ -100,7 +100,7 @@ const ALL_KANA = {
           "りゅ" : ["ryu"],
           "りょ" : ["ryo"]
         },
-        "digraphs-diacritics": {
+        digraphs_diacritics: {
           "ぎゃ" : ["gya"],
           "ぎゅ" : ["gyu"],
           "ぎょ" : ["gyo"],
@@ -118,13 +118,45 @@ const ALL_KANA = {
           "ぴょ" : ["pyo"]
         }
     },
-    "katakana": {}
+    katakana: {}
 }
-class GameService {
+class KanaGemu {
+  constructor(allKana, gameSettings) {
+    this.gameSettings = gameSettings;
+    this.challangeStartTime = 0;
+    //TODO: de-structure depending on gameSettings object
+    this.flatKanaAnswerMap = {};
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.hiragana.monographs}
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.hiragana.monographs_diacritics}
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.hiragana.digraphs}
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.hiragana.digraphs_diacritics}
 
-  async updateTime(element, startTime) {
-      element.textContent = ((Date.now() - startTime) / 1000)
-          .toFixed(2).toString().padStart(5, "0");
+    this.activeKana = Object.keys(this.flatKanaAnswerMap);
+    this.nextKana();
+
+    this.timerInterval = setInterval(this.updateTime, 43, this);
+  }
+
+  checkAnswer(answer) {
+    console.log(this);
+    if (this.flatKanaAnswerMap[this.curKanaChallange].includes(answer)) {
+      this.nextKana();
+      console.log('Correct!');
+    }
+    console.log('Wrong! Input: ', answer, ' Correct: ', this.flatKanaAnswerMap[this.curKanaChallange].join(" "));
+  }
+
+  nextKana() {
+    this.challangeStartTime = Date.now();
+    let next = Math.floor(Math.random() * this.activeKana.length);
+    this.curKanaChallange = this.activeKana[next];
+    this.gameSettings.currentKanaElement.textContent = this.curKanaChallange;
+    this.gameSettings.answerFieldElement.textContent = '';
+  }
+
+  async updateTime(game) {
+    game.gameSettings.timerElement.textContent = ((Date.now() - game.challangeStartTime) / 1000)
+      .toFixed(2).toString().padStart(5, '0');
   }
 }
 
@@ -135,8 +167,9 @@ class GameState {
 }
 
 class GameSettings {
-  constructor() {
-    this.timerElement = document.getElementById("timer");
+  constructor(timerElement, answerFieldElement, currentKanaElement) {
+    this.timerElement = timerElement;
+    this.answerFieldElement = answerFieldElement;
+    this.currentKanaElement = currentKanaElement;
   }
-
 }

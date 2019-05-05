@@ -15,12 +15,10 @@
     </div>
     <div id="challange_box">
         <div id="current_kana">
-            <span class="kana">あ</span>
+            あ
         </div>
         <div id="answer_field_wrapper">
-            <div id="answer_field" contenteditable oninput="alert('test')">
-                Answer field
-            </div>
+            <div id="answer_field" contenteditable></div>
         </div>
     </div>
     <div id="stats">
@@ -30,9 +28,16 @@
 <script type="text/javascript">
 <!--
 let startTime = Date.now();
-let gameService = new GameService();
-let timerElement = document.getElementById("timer");
-let timerInterval = setInterval(gameService.updateTime, 43, timerElement, startTime);
+let timerElement = document.getElementById('timer');
+let answerFieldElement = document.getElementById('answer_field');
+let currentKanaElement = document.getElementById('current_kana');
+
+let gameSettings = new GameSettings(timerElement, answerFieldElement, currentKanaElement);
+let game = new KanaGemu(ALL_KANA, gameSettings);
+
+answerFieldElement.addEventListener('input', (ev) => {
+    game.checkAnswer(ev.target.innerText.trim())
+});
 // -->
 </script>
 </body>
