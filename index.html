@@ -31,6 +31,9 @@ let timerElement = document.getElementById('timer');
 let answerFieldElement = document.getElementById('answer_field');
 let currentKanaElement = document.getElementById('current_kana');
 
+let kanaSettings = [...Object.keys(ALL_KANA.hiragana), ...Object.keys(ALL_KANA.katakana)]
+console.log(kanaSettings);
+
 let gameSettings = new GameSettings(timerElement, answerFieldElement, currentKanaElement);
 let game = new KanaGemu(ALL_KANA, gameSettings);
 // -->
