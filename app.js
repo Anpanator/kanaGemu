@@ -254,6 +254,12 @@ class KanaGemu {
     this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.hiragana.digraphs_diacritics}
     this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.hiragana.obsolete}
 
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.katakana.monographs}
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.katakana.monographs_diacritics}
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.katakana.digraphs}
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.katakana.digraphs_diacritics}
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.katakana.obsolete}
+
     this.activeKana = Object.keys(this.flatKanaAnswerMap);
     this.nextKana();
 

@@ -15,7 +15,6 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: stretch;
-  height: 50%;
   width: 100%;
   background-color: #ddd;
   position: relative;
@@ -67,4 +66,13 @@ body {
   font-size: 2vw;
   border: 1px solid black;
   border-radius: 5px;
+}
+
+.setting {
+  font-size: 1.25em;
+}
+
+.setting label {
+  text-transform: capitalize;
+  margin-left: 5px;
 }

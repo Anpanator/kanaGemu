@@ -25,14 +25,38 @@
         <div id="timer">00.00</div>
     </div>
 </div>
+
+<template id="settings_input">
+    <div class="setting">
+        <input type="checkbox"><label></label>
+    </div>
+</template>
 <script type="text/javascript">
 <!--
 let timerElement = document.getElementById('timer');
 let answerFieldElement = document.getElementById('answer_field');
 let currentKanaElement = document.getElementById('current_kana');
+let settingsElement = document.getElementById('settings');
 
-let kanaSettings = [...Object.keys(ALL_KANA.hiragana), ...Object.keys(ALL_KANA.katakana)]
+let kanaSettings = {};
+for (let type in ALL_KANA) {
+    for (let subtype in ALL_KANA[type]) {
+        kanaSettings[type + '_' + subtype] = false;
+    }
+}
 console.log(kanaSettings);
+
+//Set up setting elements
+let inputTemplate = document.getElementById('settings_input');
+for (let key in kanaSettings) {
+    let newSetting = document.importNode(inputTemplate.content, true);
+    let newSettingCheckbox = newSetting.querySelector('input[type=checkbox]');
+    let newSettingLabel = newSetting.querySelector('label');
+    newSettingCheckbox.setAttribute('id', key);
+    newSettingLabel.setAttribute('for', key);
+    newSettingLabel.textContent = key.replace(/_/gi, ' ');
+    settingsElement.appendChild(newSetting);
+}
 
 let gameSettings = new GameSettings(timerElement, answerFieldElement, currentKanaElement);
 let game = new KanaGemu(ALL_KANA, gameSettings);
