@@ -3,3 +3,6 @@
 A little toy project to play around with vanilla JavaScript and see if a game
 helps with learning Japanese kana.
 It's somewhat usable already, although ugly and not feature complete.
+
+If you don't want to bother checking out the project, you can just use the
+https://anpanator.github.io/kanaGemu[GitHub page].
