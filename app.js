@@ -135,15 +135,16 @@ class KanaGemu {
     this.nextKana();
 
     this.timerInterval = setInterval(this.updateTime, 43, this);
+    this.registerAnswerEventHandler();
   }
 
   checkAnswer(answer) {
-    console.log(this);
     if (this.flatKanaAnswerMap[this.curKanaChallange].includes(answer)) {
-      this.nextKana();
       console.log('Correct!');
+      this.nextKana();
+    } else {
+      console.log('Wrong! Input: ', answer, ' Correct: ', this.flatKanaAnswerMap[this.curKanaChallange].join(" "));
     }
-    console.log('Wrong! Input: ', answer, ' Correct: ', this.flatKanaAnswerMap[this.curKanaChallange].join(" "));
   }
 
   nextKana() {
@@ -152,6 +153,20 @@ class KanaGemu {
     this.curKanaChallange = this.activeKana[next];
     this.gameSettings.currentKanaElement.textContent = this.curKanaChallange;
     this.gameSettings.answerFieldElement.textContent = '';
+  }
+
+  answerFieldEventHandler(ev, game) {
+    game.checkAnswer(ev.target.innerText.trim())
+  }
+
+  registerAnswerEventHandler() {
+    this.gameSettings.answerFieldElement.addEventListener('input',
+      this.eventHandlerRef = (ev) => this.answerFieldEventHandler(ev, this)
+    );
+  }
+
+  removeAnswerEventHandler() {
+    this.gameSettings.answerFieldElement.removeEventListener('input', this.eventHandlerRef);
   }
 
   async updateTime(game) {

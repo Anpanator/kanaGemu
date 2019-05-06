@@ -27,17 +27,12 @@
 </div>
 <script type="text/javascript">
 <!--
-let startTime = Date.now();
 let timerElement = document.getElementById('timer');
 let answerFieldElement = document.getElementById('answer_field');
 let currentKanaElement = document.getElementById('current_kana');
 
 let gameSettings = new GameSettings(timerElement, answerFieldElement, currentKanaElement);
 let game = new KanaGemu(ALL_KANA, gameSettings);
-
-answerFieldElement.addEventListener('input', (ev) => {
-    game.checkAnswer(ev.target.innerText.trim())
-});
 // -->
 </script>
 </body>
