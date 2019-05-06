@@ -1,5 +1,5 @@
 = Kana Gemu
 
 A little toy project to play around with vanilla JavaScript and see if a game
-helps with learning Japanese kana. The project is not in a usable state right
-now
+helps with learning Japanese kana.
+It's somewhat usable already, although ugly and not feature complete.
