@@ -11,7 +11,10 @@
 <body>
 <div id="main_container">
     <div id="settings">
+        <button onclick="reset()">Reset everything</button>
 
+        <div id="settings_label">I want to learn:</div>
+        <div id="settings_kana"></div>
     </div>
     <div id="challange_box">
         <div id="current_kana">
@@ -33,20 +36,7 @@
 </template>
 <script type="text/javascript">
 <!--
-let timerElement = document.getElementById('timer');
-let answerFieldElement = document.getElementById('answer_field');
-let currentKanaElement = document.getElementById('current_kana');
-let settingsElement = document.getElementById('settings');
-
-let kanaSettings = {};
-for (let type in ALL_KANA) {
-    for (let subtype in ALL_KANA[type]) {
-        kanaSettings[type + '_' + subtype] = false;
-    }
-}
-
-let gameSettings = new GameSettings(timerElement, answerFieldElement, currentKanaElement, kanaSettings);
-let game = new KanaGemu(ALL_KANA, gameSettings);
+runGame();
 // -->
 </script>
 </body>
