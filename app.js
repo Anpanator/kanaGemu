@@ -244,23 +244,28 @@ const ALL_KANA = {
 }
 class KanaGemu {
   constructor(allKana, gameSettings) {
+    this.allKana = allKana;
     this.gameSettings = gameSettings;
     this.challangeStartTime = 0;
-    //TODO: de-structure depending on gameSettings object
-    this.flatKanaAnswerMap = {};
-    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.hiragana.monographs}
-    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.hiragana.monographs_diacritics}
-    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.hiragana.digraphs}
-    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.hiragana.digraphs_diacritics}
-    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.hiragana.obsolete}
+    this.generateKanaMap();
 
-    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.katakana.monographs}
-    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.katakana.monographs_diacritics}
-    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.katakana.digraphs}
-    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.katakana.digraphs_diacritics}
-    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...allKana.katakana.obsolete}
+    //Set up setting elements
+    let inputTemplate = document.getElementById('settings_input');
+    for (let key in kanaSettings) {
+        let newSetting = document.importNode(inputTemplate.content, true);
+        let newSettingCheckbox = newSetting.querySelector('input[type=checkbox]');
+        let newSettingLabel = newSetting.querySelector('label');
+        newSettingCheckbox.setAttribute('id', key);
+        newSettingLabel.setAttribute('for', key);
+        newSettingLabel.textContent = key.replace(/_/gi, ' ');
 
-    this.activeKana = Object.keys(this.flatKanaAnswerMap);
+        newSettingCheckbox.addEventListener('input',
+          (ev) => this.settingsChangeListener(ev, game)
+        );
+
+        settingsElement.appendChild(newSetting);
+    }
+
     this.nextKana();
 
     this.timerInterval = setInterval(this.updateTime, 43, this);
@@ -282,6 +287,51 @@ class KanaGemu {
     this.curKanaChallange = this.activeKana[next];
     this.gameSettings.currentKanaElement.textContent = this.curKanaChallange;
     this.gameSettings.answerFieldElement.textContent = '';
+  }
+
+  generateKanaMap() {
+    //TODO: de-structure depending on gameSettings object
+    this.flatKanaAnswerMap = {};
+    if (this.gameSettings.kanaSettings.hiragana_monographs) {
+      this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.hiragana.monographs}
+    }
+    if (this.gameSettings.kanaSettings.hiragana_monographs_diacritics) {
+      game.flatKanaAnswerMap = {...game.flatKanaAnswerMap, ...game.allKana.hiragana.monographs_diacritics}
+    }
+    if (this.gameSettings.kanaSettings.hiragana_digraphs) {
+      game.flatKanaAnswerMap = {...game.flatKanaAnswerMap, ...game.allKana.hiragana.digraphs}
+    }
+    if (this.gameSettings.kanaSettings.hiragana_digraphs_diacritics) {
+      game.flatKanaAnswerMap = {...game.flatKanaAnswerMap, ...game.allKana.hiragana.digraphs_diacritics}
+    }
+    if (this.gameSettings.kanaSettings.hiragana_obsolete) {
+      game.flatKanaAnswerMap = {...game.flatKanaAnswerMap, ...game.allKana.hiragana.obsolete}
+    }
+    if (this.gameSettings.kanaSettings.katakana_monographs) {
+      game.flatKanaAnswerMap = {...game.flatKanaAnswerMap, ...game.allKana.katakana.monographs}
+    }
+    if (this.gameSettings.kanaSettings.katakana_monographs_diacritics) {
+      game.flatKanaAnswerMap = {...game.flatKanaAnswerMap, ...game.allKana.katakana.monographs_diacritics}
+    }
+    if (this.gameSettings.kanaSettings.katakana_digraphs) {
+      game.flatKanaAnswerMap = {...game.flatKanaAnswerMap, ...game.allKana.katakana.digraphs}
+    }
+    if (this.gameSettings.kanaSettings.katakana_digraphs_diacritics) {
+      game.flatKanaAnswerMap = {...game.flatKanaAnswerMap, ...game.allKana.katakana.digraphs_diacritics}
+    }
+    if (this.gameSettings.kanaSettings.katakana_obsolete) {
+      game.flatKanaAnswerMap = {...game.flatKanaAnswerMap, ...game.allKana.katakana.obsolete}
+    }
+
+    this.activeKana = Object.keys(this.flatKanaAnswerMap);
+  }
+
+  settingsChangeListener(ev, game) {
+    let settingKey = ev.target.getAttribute('id');
+    game.gameSettings.kanaSettings[settingKey] = ev.target.checked;
+    game.generateKanaMap();
+    game.nextKana();
+    console.log('Set ' + settingKey + ' to ' + ev.target.checked);
   }
 
   answerFieldEventHandler(ev, game) {
@@ -311,9 +361,10 @@ class GameState {
 }
 
 class GameSettings {
-  constructor(timerElement, answerFieldElement, currentKanaElement) {
+  constructor(timerElement, answerFieldElement, currentKanaElement, kanaSettings) {
     this.timerElement = timerElement;
     this.answerFieldElement = answerFieldElement;
     this.currentKanaElement = currentKanaElement;
+    this.kanaSettings = kanaSettings
   }
 }

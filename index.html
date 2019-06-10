@@ -44,21 +44,8 @@ for (let type in ALL_KANA) {
         kanaSettings[type + '_' + subtype] = false;
     }
 }
-console.log(kanaSettings);
 
-//Set up setting elements
-let inputTemplate = document.getElementById('settings_input');
-for (let key in kanaSettings) {
-    let newSetting = document.importNode(inputTemplate.content, true);
-    let newSettingCheckbox = newSetting.querySelector('input[type=checkbox]');
-    let newSettingLabel = newSetting.querySelector('label');
-    newSettingCheckbox.setAttribute('id', key);
-    newSettingLabel.setAttribute('for', key);
-    newSettingLabel.textContent = key.replace(/_/gi, ' ');
-    settingsElement.appendChild(newSetting);
-}
-
-let gameSettings = new GameSettings(timerElement, answerFieldElement, currentKanaElement);
+let gameSettings = new GameSettings(timerElement, answerFieldElement, currentKanaElement, kanaSettings);
 let game = new KanaGemu(ALL_KANA, gameSettings);
 // -->
 </script>
