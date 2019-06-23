@@ -338,7 +338,7 @@ checkAnswer(answer) {
 
 updateStats(kana, score) {
   if (typeof this.kanaStats[this.curKanaChallange] !== 'undefined') {
-    let newScore = (this.kanaStats[this.curKanaChallange] + score * 9) / 10;
+    let newScore = (this.kanaStats[this.curKanaChallange] * 9 + score) / 10;
     this.kanaStats[this.curKanaChallange] = newScore;
   }
   else {
