@@ -1,246 +1,246 @@
 const ALL_KANA = {
-    hiragana: {
-        monographs: {
-            "あ" : ["a"],
-            "い" : ["i"],
-            "う" : ["u"],
-            "え" : ["e"],
-            "お" : ["o"],
-            "か" : ["ka"],
-            "き" : ["ki"],
-            "く" : ["ku"],
-            "け" : ["ke"],
-            "こ" : ["ko"],
-            "さ" : ["sa"],
-            "し" : ["shi"],
-            "す" : ["su"],
-            "せ" : ["se"],
-            "そ" : ["so"],
-            "た" : ["ta"],
-            "ち" : ["chi"],
-            "つ" : ["tsu"],
-            "て" : ["te"],
-            "と" : ["to"],
-            "な" : ["na"],
-            "に" : ["ni"],
-            "ぬ" : ["nu"],
-            "ね" : ["ne"],
-            "の" : ["no"],
-            "は" : ["ha", "wa"], //the latter as particle
-            "ひ" : ["hi"],
-            "ふ" : ["fu"],
-            "へ" : ["he", "e"], //the latter as particle
-            "ほ" : ["ho"],
-            "ま" : ["ma"],
-            "み" : ["mi"],
-            "む" : ["mu"],
-            "め" : ["me"],
-            "も" : ["mo"],
-            "や" : ["ya"],
-            "ゆ" : ["yu"],
-            "よ" : ["yo"],
-            "ら" : ["ra"],
-            "り" : ["ri"],
-            "る" : ["ru"],
-            "れ" : ["re"],
-            "ろ" : ["ro"],
-            "わ" : ["wa"],
-            "を" : ["wo"],
-            "ん" : ["n"]
-        },
-        monographs_diacritics: {
-            "が" : ["ga"],
-            "ぎ" : ["gi"],
-            "ぐ" : ["gu"],
-            "げ" : ["ge"],
-            "ご" : ["go"],
-            "ざ" : ["za"],
-            "じ" : ["ji"],
-            "ず" : ["zu"],
-            "ぜ" : ["ze"],
-            "ぞ" : ["zo"],
-            "だ" : ["da"],
-            "ぢ" : ["ji", "dji", "jyi"],
-            "づ" : ["dzu", "zu"],
-            "で" : ["de"],
-            "ど" : ["do"],
-            "ば" : ["ba"],
-            "び" : ["bi"],
-            "ぶ" : ["bu"],
-            "べ" : ["be"],
-            "ぼ" : ["bo"],
-            "ぱ" : ["pa"],
-            "ぴ" : ["pi"],
-            "ぷ" : ["pu"],
-            "ぺ" : ["pe"],
-            "ぽ" : ["po"]
-        },
-        digraphs: {
-          "きゃ" : ["kya"],
-          "きゅ" : ["kyu"],
-          "きょ" : ["kyo"],
-          "しゃ" : ["sha"],
-          "しゅ" : ["shu"],
-          "しょ" : ["sho"],
-          "ちゃ" : ["cha"],
-          "ちゅ" : ["chu"],
-          "ちょ" : ["cho"],
-          "にゃ" : ["nya"],
-          "にゅ" : ["nyu"],
-          "にょ" : ["nyo"],
-          "ひゃ" : ["hya"],
-          "ひゅ" : ["hyu"],
-          "ひょ" : ["hyo"],
-          "みゃ" : ["mya"],
-          "みゅ" : ["myu"],
-          "みょ" : ["myo"],
-          "りゃ" : ["rya"],
-          "りゅ" : ["ryu"],
-          "りょ" : ["ryo"]
-        },
-        digraphs_diacritics: {
-          "ぎゃ" : ["gya"],
-          "ぎゅ" : ["gyu"],
-          "ぎょ" : ["gyo"],
-          "じゃ" : ["ja"],
-          "じゅ" : ["ju"],
-          "じょ" : ["jo"],
-          "びゃ" : ["bya"],
-          "びゅ" : ["byu"],
-          "びょ" : ["byo"],
-          "ぴゃ" : ["pya"],
-          "ぴゅ" : ["pyu"],
-          "ぴょ" : ["pyo"]
-        },
-        obsolete: {
-          "ゐ" : ["wi"],
-          "ゑ" : ["we"],
-          "ぢゃ" : ["ja"],
-          "ぢゅ" : ["ju"],
-          "ぢょ" : ["jo"],
-        }
+  hiragana: {
+    monographs: {
+      "あ" : ["a"],
+      "い" : ["i"],
+      "う" : ["u"],
+      "え" : ["e"],
+      "お" : ["o"],
+      "か" : ["ka"],
+      "き" : ["ki"],
+      "く" : ["ku"],
+      "け" : ["ke"],
+      "こ" : ["ko"],
+      "さ" : ["sa"],
+      "し" : ["shi"],
+      "す" : ["su"],
+      "せ" : ["se"],
+      "そ" : ["so"],
+      "た" : ["ta"],
+      "ち" : ["chi"],
+      "つ" : ["tsu"],
+      "て" : ["te"],
+      "と" : ["to"],
+      "な" : ["na"],
+      "に" : ["ni"],
+      "ぬ" : ["nu"],
+      "ね" : ["ne"],
+      "の" : ["no"],
+      "は" : ["ha", "wa"], //the latter as particle
+      "ひ" : ["hi"],
+      "ふ" : ["fu"],
+      "へ" : ["he", "e"], //the latter as particle
+      "ほ" : ["ho"],
+      "ま" : ["ma"],
+      "み" : ["mi"],
+      "む" : ["mu"],
+      "め" : ["me"],
+      "も" : ["mo"],
+      "や" : ["ya"],
+      "ゆ" : ["yu"],
+      "よ" : ["yo"],
+      "ら" : ["ra"],
+      "り" : ["ri"],
+      "る" : ["ru"],
+      "れ" : ["re"],
+      "ろ" : ["ro"],
+      "わ" : ["wa"],
+      "を" : ["wo"],
+      "ん" : ["n"]
     },
-    katakana: {
-      monographs: {
-          "ア" : ["a"],
-          "イ" : ["i"],
-          "ウ" : ["u"],
-          "エ" : ["e"],
-          "オ" : ["o"],
-          "カ" : ["ka"],
-          "キ" : ["ki"],
-          "ク" : ["ku"],
-          "ケ" : ["ke"],
-          "コ" : ["ko"],
-          "サ" : ["sa"],
-          "シ" : ["shi"],
-          "ス" : ["su"],
-          "セ" : ["se"],
-          "ソ" : ["so"],
-          "タ" : ["ta"],
-          "チ" : ["chi"],
-          "ツ" : ["tsu"],
-          "テ" : ["te"],
-          "ト" : ["to"],
-          "ナ" : ["na"],
-          "ニ" : ["ni"],
-          "ヌ" : ["nu"],
-          "ネ" : ["ne"],
-          "ノ" : ["no"],
-          "ハ" : ["ha"],
-          "ヒ" : ["hi"],
-          "フ" : ["fu"],
-          "ヘ" : ["he"],
-          "ホ" : ["ho"],
-          "マ" : ["ma"],
-          "ミ" : ["mi"],
-          "ム" : ["mu"],
-          "メ" : ["me"],
-          "モ" : ["mo"],
-          "ヤ" : ["ya"],
-          "ユ" : ["yu"],
-          "ヨ" : ["yo"],
-          "ラ" : ["ra"],
-          "リ" : ["ri"],
-          "ル" : ["ru"],
-          "レ" : ["re"],
-          "ロ" : ["ro"],
-          "ワ" : ["wa"],
-          "ヲ" : ["wo"],
-          "ン" : ["n"]
-      },
-      monographs_diacritics: {
-          "ガ" : ["ga"],
-          "ギ" : ["gi"],
-          "グ" : ["gu"],
-          "ゲ" : ["ge"],
-          "ゴ" : ["go"],
-          "ザ" : ["za"],
-          "ジ" : ["ji"],
-          "ズ" : ["zu"],
-          "ゼ" : ["ze"],
-          "ゾ" : ["zo"],
-          "ダ" : ["da"],
-          "ヂ" : ["ji"],
-          "ヅ" : ["zu"],
-          "デ" : ["de"],
-          "ド" : ["do"],
-          "バ" : ["ba"],
-          "ビ" : ["bi"],
-          "ブ" : ["bu"],
-          "ベ" : ["be"],
-          "ボ" : ["bo"],
-          "パ" : ["pa"],
-          "ピ" : ["pi"],
-          "プ" : ["pu"],
-          "ペ" : ["pe"],
-          "ポ" : ["po"]
-      },
-      digraphs: {
-        "キャ" : ["kya"],
-        "キュ" : ["kyu"],
-        "キョ" : ["kyo"],
-        "シャ" : ["sha"],
-        "シュ" : ["shu"],
-        "ショ" : ["sho"],
-        "チャ" : ["cha"],
-        "チュ" : ["chu"],
-        "チョ" : ["cho"],
-        "ニャ" : ["nya"],
-        "ニュ" : ["nyu"],
-        "ニョ" : ["nyo"],
-        "ヒャ" : ["hya"],
-        "ヒュ" : ["hyu"],
-        "ヒョ" : ["hyo"],
-        "ミャ" : ["mya"],
-        "ミュ" : ["myu"],
-        "ミョ" : ["myo"],
-        "リャ" : ["rya"],
-        "リュ" : ["ryu"],
-        "リョ" : ["ryo"]
-      },
-      digraphs_diacritics: {
-        "ギャ" : ["gya"],
-        "ギュ" : ["gyu"],
-        "ギョ" : ["gyo"],
-        "ジャ" : ["ja"],
-        "ジュ" : ["ju"],
-        "ジョ" : ["jo"],
-        "ヂャ" : ["ja"],
-        "ヂュ" : ["ju"],
-        "ヂョ" : ["jo"],
-        "ビャ" : ["bya"],
-        "ビュ" : ["byu"],
-        "ビョ" : ["byo"],
-        "ピャ" : ["pya"],
-        "ピュ" : ["pyu"],
-        "ピョ" : ["pyo"]
-      },
-      obsolete: {
-        "ヰ" : ["wi"],
-        "ヱ" : ["we"]
-      }
+    monographs_diacritics: {
+      "が" : ["ga"],
+      "ぎ" : ["gi"],
+      "ぐ" : ["gu"],
+      "げ" : ["ge"],
+      "ご" : ["go"],
+      "ざ" : ["za"],
+      "じ" : ["ji"],
+      "ず" : ["zu"],
+      "ぜ" : ["ze"],
+      "ぞ" : ["zo"],
+      "だ" : ["da"],
+      "ぢ" : ["ji", "dji", "jyi"],
+      "づ" : ["dzu", "zu"],
+      "で" : ["de"],
+      "ど" : ["do"],
+      "ば" : ["ba"],
+      "び" : ["bi"],
+      "ぶ" : ["bu"],
+      "べ" : ["be"],
+      "ぼ" : ["bo"],
+      "ぱ" : ["pa"],
+      "ぴ" : ["pi"],
+      "ぷ" : ["pu"],
+      "ぺ" : ["pe"],
+      "ぽ" : ["po"]
+    },
+    digraphs: {
+      "きゃ" : ["kya"],
+      "きゅ" : ["kyu"],
+      "きょ" : ["kyo"],
+      "しゃ" : ["sha"],
+      "しゅ" : ["shu"],
+      "しょ" : ["sho"],
+      "ちゃ" : ["cha"],
+      "ちゅ" : ["chu"],
+      "ちょ" : ["cho"],
+      "にゃ" : ["nya"],
+      "にゅ" : ["nyu"],
+      "にょ" : ["nyo"],
+      "ひゃ" : ["hya"],
+      "ひゅ" : ["hyu"],
+      "ひょ" : ["hyo"],
+      "みゃ" : ["mya"],
+      "みゅ" : ["myu"],
+      "みょ" : ["myo"],
+      "りゃ" : ["rya"],
+      "りゅ" : ["ryu"],
+      "りょ" : ["ryo"]
+    },
+    digraphs_diacritics: {
+      "ぎゃ" : ["gya"],
+      "ぎゅ" : ["gyu"],
+      "ぎょ" : ["gyo"],
+      "じゃ" : ["ja"],
+      "じゅ" : ["ju"],
+      "じょ" : ["jo"],
+      "びゃ" : ["bya"],
+      "びゅ" : ["byu"],
+      "びょ" : ["byo"],
+      "ぴゃ" : ["pya"],
+      "ぴゅ" : ["pyu"],
+      "ぴょ" : ["pyo"]
+    },
+    obsolete: {
+      "ゐ" : ["wi"],
+      "ゑ" : ["we"],
+      "ぢゃ" : ["ja"],
+      "ぢゅ" : ["ju"],
+      "ぢょ" : ["jo"],
     }
+  },
+  katakana: {
+    monographs: {
+      "ア" : ["a"],
+      "イ" : ["i"],
+      "ウ" : ["u"],
+      "エ" : ["e"],
+      "オ" : ["o"],
+      "カ" : ["ka"],
+      "キ" : ["ki"],
+      "ク" : ["ku"],
+      "ケ" : ["ke"],
+      "コ" : ["ko"],
+      "サ" : ["sa"],
+      "シ" : ["shi"],
+      "ス" : ["su"],
+      "セ" : ["se"],
+      "ソ" : ["so"],
+      "タ" : ["ta"],
+      "チ" : ["chi"],
+      "ツ" : ["tsu"],
+      "テ" : ["te"],
+      "ト" : ["to"],
+      "ナ" : ["na"],
+      "ニ" : ["ni"],
+      "ヌ" : ["nu"],
+      "ネ" : ["ne"],
+      "ノ" : ["no"],
+      "ハ" : ["ha"],
+      "ヒ" : ["hi"],
+      "フ" : ["fu"],
+      "ヘ" : ["he"],
+      "ホ" : ["ho"],
+      "マ" : ["ma"],
+      "ミ" : ["mi"],
+      "ム" : ["mu"],
+      "メ" : ["me"],
+      "モ" : ["mo"],
+      "ヤ" : ["ya"],
+      "ユ" : ["yu"],
+      "ヨ" : ["yo"],
+      "ラ" : ["ra"],
+      "リ" : ["ri"],
+      "ル" : ["ru"],
+      "レ" : ["re"],
+      "ロ" : ["ro"],
+      "ワ" : ["wa"],
+      "ヲ" : ["wo"],
+      "ン" : ["n"]
+    },
+    monographs_diacritics: {
+      "ガ" : ["ga"],
+      "ギ" : ["gi"],
+      "グ" : ["gu"],
+      "ゲ" : ["ge"],
+      "ゴ" : ["go"],
+      "ザ" : ["za"],
+      "ジ" : ["ji"],
+      "ズ" : ["zu"],
+      "ゼ" : ["ze"],
+      "ゾ" : ["zo"],
+      "ダ" : ["da"],
+      "ヂ" : ["ji"],
+      "ヅ" : ["zu"],
+      "デ" : ["de"],
+      "ド" : ["do"],
+      "バ" : ["ba"],
+      "ビ" : ["bi"],
+      "ブ" : ["bu"],
+      "ベ" : ["be"],
+      "ボ" : ["bo"],
+      "パ" : ["pa"],
+      "ピ" : ["pi"],
+      "プ" : ["pu"],
+      "ペ" : ["pe"],
+      "ポ" : ["po"]
+    },
+    digraphs: {
+      "キャ" : ["kya"],
+      "キュ" : ["kyu"],
+      "キョ" : ["kyo"],
+      "シャ" : ["sha"],
+      "シュ" : ["shu"],
+      "ショ" : ["sho"],
+      "チャ" : ["cha"],
+      "チュ" : ["chu"],
+      "チョ" : ["cho"],
+      "ニャ" : ["nya"],
+      "ニュ" : ["nyu"],
+      "ニョ" : ["nyo"],
+      "ヒャ" : ["hya"],
+      "ヒュ" : ["hyu"],
+      "ヒョ" : ["hyo"],
+      "ミャ" : ["mya"],
+      "ミュ" : ["myu"],
+      "ミョ" : ["myo"],
+      "リャ" : ["rya"],
+      "リュ" : ["ryu"],
+      "リョ" : ["ryo"]
+    },
+    digraphs_diacritics: {
+      "ギャ" : ["gya"],
+      "ギュ" : ["gyu"],
+      "ギョ" : ["gyo"],
+      "ジャ" : ["ja"],
+      "ジュ" : ["ju"],
+      "ジョ" : ["jo"],
+      "ヂャ" : ["ja"],
+      "ヂュ" : ["ju"],
+      "ヂョ" : ["jo"],
+      "ビャ" : ["bya"],
+      "ビュ" : ["byu"],
+      "ビョ" : ["byo"],
+      "ピャ" : ["pya"],
+      "ピュ" : ["pyu"],
+      "ピョ" : ["pyo"]
+    },
+    obsolete: {
+      "ヰ" : ["wi"],
+      "ヱ" : ["we"]
+    }
+  }
 }
 
 function init() {
@@ -264,35 +264,25 @@ function runGame() {
 
   let kanaSettings = {};
   for (let type in ALL_KANA) {
-      for (let subtype in ALL_KANA[type]) {
-        kanaSettings[type + '_' + subtype] = false;
-      }
+    for (let subtype in ALL_KANA[type]) {
+      kanaSettings[type + '_' + subtype] = false;
+    }
   }
 
   let gameSettings;
-  if (localStorage.getItem('kanaSettings')) {
-    gameSettings = new GameSettings(
-      timerElement,
-      answerFieldElement,
-      currentKanaElement,
-      JSON.parse(localStorage.getItem('kanaSettings'))
-    );
-  } else {
-    gameSettings = new GameSettings(
-      timerElement,
-      answerFieldElement,
-      currentKanaElement,
-      kanaSettings
-    );
-  }
+  let storedKanaSettings = localStorage.getItem('kanaSettings');
+  gameSettings = new GameSettings(
+    timerElement,
+    answerFieldElement,
+    currentKanaElement,
+    document.getElementById('lastScore'),
+    JSON.parse(storedKanaSettings) || kanaSettings
+  );
 
-  window.game = new KanaGemu(ALL_KANA, gameSettings);
-}
+  let storedStats = localStorage.getItem('kanaStats');
+  let kanaStats = JSON.parse(storedStats) || {};
 
-function updateLocalStorage(gameSettings) {
-  let localStorage = window.localStorage;
-  let kanaSettings = JSON.stringify(gameSettings.kanaSettings);
-  localStorage.setItem('kanaSettings', kanaSettings);
+  window.game = new KanaGemu(ALL_KANA, gameSettings, kanaStats);
 }
 
 function reset() {
@@ -301,138 +291,167 @@ function reset() {
 }
 
 class KanaGemu {
-  constructor(allKana, gameSettings) {
+  constructor(allKana, gameSettings, kanaStats) {
     this.allKana = allKana;
     this.gameSettings = gameSettings;
+    this.kanaStats = kanaStats;
     this.challangeStartTime = 0;
     this.generateKanaMap();
 
     //Set up setting elements
     let settingsElement = document.getElementById('settings_kana');
     settingsElement.addEventListener('input',
-      (ev) => this.settingsChangeListener(ev, this)
-    );
+    (ev) => this.settingsChangeListener(ev, this)
+  );
 
-    //Remove any children from the settings element
-    while(settingsElement.firstChild) {
-      settingsElement.removeChild(settingsElement.firstChild);
-    }
+  //Remove any children from the settings element
+  while(settingsElement.firstChild) {
+    settingsElement.removeChild(settingsElement.firstChild);
+  }
 
-    //Collect all setting elements in a dom fragment first
-    let domFragment = document.createDocumentFragment();
-    for (let key in this.gameSettings.kanaSettings) {
-        let newSetting = new SettingsElement(key, this.gameSettings.kanaSettings[key]);
-        settingsElement.appendChild(newSetting.mainNode);
-        this.gameSettings.addSettingsElement(key, newSetting);
-    }
+  //Collect all setting elements in a dom fragment first
+  let domFragment = document.createDocumentFragment();
+  for (let key in this.gameSettings.kanaSettings) {
+    let newSetting = new SettingsElement(key, this.gameSettings.kanaSettings[key]);
+    settingsElement.appendChild(newSetting.mainNode);
+    this.gameSettings.addSettingsElement(key, newSetting);
+  }
 
-    //Actually attach settings in DOM
-    settingsElement.appendChild(domFragment);
+  //Actually attach settings in DOM
+  settingsElement.appendChild(domFragment);
 
+  this.nextKana();
+
+  this.timerInterval = setInterval(this.updateTime, 43, this);
+  this.registerAnswerEventHandler();
+  this.gameSettings.answerFieldElement.addEventListener('focus', () => this.nextKana());
+}
+
+checkAnswer(answer) {
+  if (this.flatKanaAnswerMap[this.curKanaChallange].includes(answer)) {
+    let score = 1 + (100 / ((Date.now() - game.challangeStartTime) / 1000));
+    score = Math.min(100, score);
+    this.updateStats(this.curKanaChallange, score);
     this.nextKana();
-
-    this.timerInterval = setInterval(this.updateTime, 43, this);
-    this.registerAnswerEventHandler();
-  }
-
-  checkAnswer(answer) {
-    if (this.flatKanaAnswerMap[this.curKanaChallange].includes(answer)) {
-      console.log('Correct!');
-      this.nextKana();
-    } else {
-      console.log('Wrong! Input: ', answer, ' Correct: ', this.flatKanaAnswerMap[this.curKanaChallange].join(" "));
-    }
-  }
-
-  nextKana() {
-    this.challangeStartTime = Date.now();
-    let next = Math.floor(Math.random() * this.activeKana.length);
-    this.curKanaChallange = this.activeKana[next];
-    this.gameSettings.currentKanaElement.textContent = this.curKanaChallange;
-    this.gameSettings.answerFieldElement.textContent = '';
-  }
-
-  generateKanaMap() {
-    this.flatKanaAnswerMap = {};
-    if (this.gameSettings.kanaSettings.hiragana_monographs) {
-      this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.hiragana.monographs}
-    }
-    if (this.gameSettings.kanaSettings.hiragana_monographs_diacritics) {
-      this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.hiragana.monographs_diacritics}
-    }
-    if (this.gameSettings.kanaSettings.hiragana_digraphs) {
-      this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.hiragana.digraphs}
-    }
-    if (this.gameSettings.kanaSettings.hiragana_digraphs_diacritics) {
-      this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.hiragana.digraphs_diacritics}
-    }
-    if (this.gameSettings.kanaSettings.hiragana_obsolete) {
-      this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.hiragana.obsolete}
-    }
-    if (this.gameSettings.kanaSettings.katakana_monographs) {
-      this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.katakana.monographs}
-    }
-    if (this.gameSettings.kanaSettings.katakana_monographs_diacritics) {
-      this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.katakana.monographs_diacritics}
-    }
-    if (this.gameSettings.kanaSettings.katakana_digraphs) {
-      this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.katakana.digraphs}
-    }
-    if (this.gameSettings.kanaSettings.katakana_digraphs_diacritics) {
-      this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.katakana.digraphs_diacritics}
-    }
-    if (this.gameSettings.kanaSettings.katakana_obsolete) {
-      this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.katakana.obsolete}
-    }
-
-    this.activeKana = Object.keys(this.flatKanaAnswerMap);
-  }
-
-  settingsChangeListener(ev, game) {
-    ev.stopPropagation();
-    for (let settingKey in game.gameSettings.kanaSettings) {
-    let settingsElement = game.gameSettings.getSettingsElement(settingKey);
-      if (game.gameSettings.kanaSettings[settingKey] !== settingsElement.isActive) {
-        game.gameSettings.kanaSettings[settingKey] = settingsElement.isActive;
-      }
-    }
-    game.generateKanaMap();
-    game.nextKana();
-
-    updateLocalStorage(game.gameSettings);
-  }
-
-  answerFieldEventHandler(ev, game) {
-    game.checkAnswer(ev.target.innerText.trim())
-  }
-
-  registerAnswerEventHandler() {
-    this.gameSettings.answerFieldElement.addEventListener('input',
-      this.eventHandlerRef = (ev) => this.answerFieldEventHandler(ev, this)
-    );
-  }
-
-  removeAnswerEventHandler() {
-    this.gameSettings.answerFieldElement.removeEventListener('input', this.eventHandlerRef);
-  }
-
-  async updateTime(game) {
-    game.gameSettings.timerElement.textContent = ((Date.now() - game.challangeStartTime) / 1000)
-      .toFixed(2).toString().padStart(5, '0');
   }
 }
 
-class GameState {
-    constructor() {
+updateStats(kana, score) {
+  if (typeof this.kanaStats[this.curKanaChallange] !== 'undefined') {
+    let newScore = (this.kanaStats[this.curKanaChallange] + score * 9) / 10;
+    this.kanaStats[this.curKanaChallange] = newScore;
+  }
+  else {
+    this.kanaStats[this.curKanaChallange] = score;
+  }
+  this.gameSettings.lastScoreElement.textContent = score.toFixed(2).toString();
+  window.localStorage.setItem('kanaStats', JSON.stringify(this.kanaStats));
+}
 
+persistGameSettings() {
+  window.localStorage.setItem('kanaSettings', JSON.stringify(this.gameSettings.kanaSettings));
+}
+
+nextKana() {
+  this.challangeStartTime = Date.now();
+  let scoreMap = {};
+  let curScore = 100;
+  let curKana = null;
+  for (let kanaKey in this.activeKana) {
+    let score = this.kanaStats[this.activeKana[kanaKey]] || 0;
+    let rand = (Math.random() * 900 + 1);
+
+    score = (score + rand) / 10;
+    scoreMap[this.activeKana[kanaKey]] = score;
+  }
+
+  for (let key in scoreMap) {
+    if (scoreMap[key] < curScore) {
+      curScore = scoreMap[key];
+      curKana = key;
     }
+  }
+
+  this.curKanaChallange = curKana;
+  this.gameSettings.currentKanaElement.textContent = curKana;
+  this.gameSettings.answerFieldElement.textContent = '';
+  console.log(this.flatKanaAnswerMap[curKana] || '');
+}
+
+generateKanaMap() {
+  this.flatKanaAnswerMap = {};
+  if (this.gameSettings.kanaSettings.hiragana_monographs) {
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.hiragana.monographs}
+  }
+  if (this.gameSettings.kanaSettings.hiragana_monographs_diacritics) {
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.hiragana.monographs_diacritics}
+  }
+  if (this.gameSettings.kanaSettings.hiragana_digraphs) {
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.hiragana.digraphs}
+  }
+  if (this.gameSettings.kanaSettings.hiragana_digraphs_diacritics) {
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.hiragana.digraphs_diacritics}
+  }
+  if (this.gameSettings.kanaSettings.hiragana_obsolete) {
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.hiragana.obsolete}
+  }
+  if (this.gameSettings.kanaSettings.katakana_monographs) {
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.katakana.monographs}
+  }
+  if (this.gameSettings.kanaSettings.katakana_monographs_diacritics) {
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.katakana.monographs_diacritics}
+  }
+  if (this.gameSettings.kanaSettings.katakana_digraphs) {
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.katakana.digraphs}
+  }
+  if (this.gameSettings.kanaSettings.katakana_digraphs_diacritics) {
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.katakana.digraphs_diacritics}
+  }
+  if (this.gameSettings.kanaSettings.katakana_obsolete) {
+    this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.katakana.obsolete}
+  }
+
+  this.activeKana = Object.keys(this.flatKanaAnswerMap);
+}
+
+settingsChangeListener(ev, game) {
+  ev.stopPropagation();
+  for (let settingKey in game.gameSettings.kanaSettings) {
+    let settingsElement = game.gameSettings.getSettingsElement(settingKey);
+    if (game.gameSettings.kanaSettings[settingKey] !== settingsElement.isActive) {
+      game.gameSettings.kanaSettings[settingKey] = settingsElement.isActive;
+    }
+  }
+  game.generateKanaMap();
+  game.persistGameSettings();
+}
+
+answerFieldEventHandler(ev, game) {
+  game.checkAnswer(ev.target.innerText.trim())
+}
+
+registerAnswerEventHandler() {
+  this.gameSettings.answerFieldElement.addEventListener('input',
+  this.eventHandlerRef = (ev) => this.answerFieldEventHandler(ev, this)
+);
+}
+
+removeAnswerEventHandler() {
+  this.gameSettings.answerFieldElement.removeEventListener('input', this.eventHandlerRef);
+}
+
+async updateTime(game) {
+  game.gameSettings.timerElement.textContent = ((Date.now() - game.challangeStartTime) / 1000)
+  .toFixed(2).toString().padStart(5, '0');
+}
 }
 
 class GameSettings {
-  constructor(timerElement, answerFieldElement, currentKanaElement, kanaSettings) {
+  constructor(timerElement, answerFieldElement, currentKanaElement, lastScoreElement, kanaSettings) {
     this.timerElement = timerElement;
     this.answerFieldElement = answerFieldElement;
     this.currentKanaElement = currentKanaElement;
+    this.lastScoreElement = lastScoreElement;
     this.kanaSettings = kanaSettings;
     this.settingsElements = {};
   }
@@ -443,18 +462,6 @@ class GameSettings {
 
   getSettingsElement(key) {
     return this.settingsElements[key];
-  }
-}
-
-class SimpleHttpClient {
-  get(url) {
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.open('GET', url, true);
-      xhr.onload = () => resolve(xhr);
-      xhr.onerror = () => reject(xhr);
-      xhr.send();
-    });
   }
 }
 
