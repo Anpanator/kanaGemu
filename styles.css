@@ -5,6 +5,10 @@
   font-weight: normal;
 }
 
+template {
+  display:none;
+}
+
 body {
   width: 100vw;
   height: 100vh;
@@ -70,6 +74,7 @@ body {
 
 .setting {
   font-size: 1.25em;
+  display: block;
 }
 
 .setting label {

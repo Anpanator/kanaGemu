@@ -243,6 +243,18 @@ const ALL_KANA = {
     }
 }
 
+function init() {
+  loadTemplates();
+  runGame();
+}
+
+function loadTemplates() {
+  document.templates = {};
+  for (let template of document.getElementsByTagName('template')) {
+    document.templates[template.getAttribute('id')] = document.importNode(template, true).content;
+  }
+}
+
 function runGame() {
   let localStorage = window.localStorage;
   let timerElement = document.getElementById('timer');
@@ -295,7 +307,27 @@ class KanaGemu {
     this.challangeStartTime = 0;
     this.generateKanaMap();
 
-    this.generateSettingsElements();
+    //Set up setting elements
+    let settingsElement = document.getElementById('settings_kana');
+    settingsElement.addEventListener('input',
+      (ev) => this.settingsChangeListener(ev, this)
+    );
+
+    //Remove any children from the settings element
+    while(settingsElement.firstChild) {
+      settingsElement.removeChild(settingsElement.firstChild);
+    }
+
+    //Collect all setting elements in a dom fragment first
+    let domFragment = document.createDocumentFragment();
+    for (let key in this.gameSettings.kanaSettings) {
+        let newSetting = new SettingsElement(key, this.gameSettings.kanaSettings[key]);
+        settingsElement.appendChild(newSetting.mainNode);
+        this.gameSettings.addSettingsElement(key, newSetting);
+    }
+
+    //Actually attach settings in DOM
+    settingsElement.appendChild(domFragment);
 
     this.nextKana();
 
@@ -320,33 +352,7 @@ class KanaGemu {
     this.gameSettings.answerFieldElement.textContent = '';
   }
 
-  generateSettingsElements() {
-    //Set up setting elements
-    let settingsElement = document.getElementById('settings_kana');
-    //Remove any children from the settings element
-    while (settingsElement.firstChild) {
-      settingsElement.removeChild(settingsElement.firstChild);
-    }
-    let inputTemplate = document.getElementById('settings_input');
-    for (let key in this.gameSettings.kanaSettings) {
-        let newSetting = document.importNode(inputTemplate.content, true);
-        let newSettingCheckbox = newSetting.querySelector('input[type=checkbox]');
-        let newSettingLabel = newSetting.querySelector('label');
-        newSettingCheckbox.setAttribute('id', key);
-        newSettingCheckbox.checked = this.gameSettings.kanaSettings[key];
-        newSettingLabel.setAttribute('for', key);
-        newSettingLabel.textContent = key.replace(/_/gi, ' ');
-
-        newSettingCheckbox.addEventListener('input',
-          (ev) => this.settingsChangeListener(ev, this)
-        );
-
-        settingsElement.appendChild(newSetting);
-    }
-  }
-
   generateKanaMap() {
-    //TODO: de-structure depending on gameSettings object
     this.flatKanaAnswerMap = {};
     if (this.gameSettings.kanaSettings.hiragana_monographs) {
       this.flatKanaAnswerMap = {...this.flatKanaAnswerMap, ...this.allKana.hiragana.monographs}
@@ -383,11 +389,16 @@ class KanaGemu {
   }
 
   settingsChangeListener(ev, game) {
-    let settingKey = ev.target.getAttribute('id');
-    game.gameSettings.kanaSettings[settingKey] = ev.target.checked;
+    ev.stopPropagation();
+    for (let settingKey in game.gameSettings.kanaSettings) {
+    let settingsElement = game.gameSettings.getSettingsElement(settingKey);
+      if (game.gameSettings.kanaSettings[settingKey] !== settingsElement.isActive) {
+        game.gameSettings.kanaSettings[settingKey] = settingsElement.isActive;
+      }
+    }
     game.generateKanaMap();
     game.nextKana();
-    console.log('Set ' + settingKey + ' to ' + ev.target.checked);
+
     updateLocalStorage(game.gameSettings);
   }
 
@@ -422,6 +433,55 @@ class GameSettings {
     this.timerElement = timerElement;
     this.answerFieldElement = answerFieldElement;
     this.currentKanaElement = currentKanaElement;
-    this.kanaSettings = kanaSettings
+    this.kanaSettings = kanaSettings;
+    this.settingsElements = {};
+  }
+
+  addSettingsElement(key, element) {
+    this.settingsElements[key] = element;
+  }
+
+  getSettingsElement(key) {
+    return this.settingsElements[key];
+  }
+}
+
+class SimpleHttpClient {
+  get(url) {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.onload = () => resolve(xhr);
+      xhr.onerror = () => reject(xhr);
+      xhr.send();
+    });
+  }
+}
+
+class SettingsElement {
+  constructor(settingKey, settingActive = false) {
+    this._mainNode = document.templates.settings_input.firstElementChild.cloneNode(true);
+    this._checkboxNode = this.mainNode.getElementsByTagName('input')[0];
+    this._labelNode = this.mainNode.getElementsByTagName('label')[0];
+    this._checkboxNode.setAttribute('id', settingKey);
+    this._checkboxNode.checked = settingActive;
+    this._labelNode.setAttribute('for', settingKey);
+    this._labelNode.textContent = settingKey.replace(/_/gi, ' ');
+  }
+
+  get mainNode() {
+    return this._mainNode;
+  }
+
+  set mainNode(v) {
+    if (this._mainNode !== null) {
+      this._mainNode = v;
+    } else {
+      throw 'Cannot overwrite node of SettingsElement';
+    }
+  }
+
+  get isActive() {
+    return this._checkboxNode.checked;
   }
 }
