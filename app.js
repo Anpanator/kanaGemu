@@ -1,3 +1,9 @@
+const localStorage = window.localStorage || {
+  getItem: () => null,
+  setItem: () => {},
+  clear: () => {},
+};
+
 const ALL_KANA = {
   hiragana: {
     monographs: {
@@ -256,7 +262,6 @@ function loadTemplates() {
 }
 
 function runGame() {
-  let localStorage = window.localStorage;
   let timerElement = document.getElementById('timer');
   let answerFieldElement = document.getElementById('answer_field');
   let currentKanaElement = document.getElementById('current_kana');
@@ -286,7 +291,7 @@ function runGame() {
 }
 
 function reset() {
-  window.localStorage.clear();
+  localStorage.clear();
   window.location.reload();
 }
 
@@ -345,11 +350,11 @@ updateStats(kana, score) {
     this.kanaStats[this.curKanaChallange] = score;
   }
   this.gameSettings.lastScoreElement.textContent = score.toFixed(2).toString();
-  window.localStorage.setItem('kanaStats', JSON.stringify(this.kanaStats));
+  localStorage.setItem('kanaStats', JSON.stringify(this.kanaStats));
 }
 
 persistGameSettings() {
-  window.localStorage.setItem('kanaSettings', JSON.stringify(this.gameSettings.kanaSettings));
+  localStorage.setItem('kanaSettings', JSON.stringify(this.gameSettings.kanaSettings));
 }
 
 nextKana() {
